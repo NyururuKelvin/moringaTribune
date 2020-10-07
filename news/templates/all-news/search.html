@@ -1,0 +1,31 @@
+{%extends 'all-news/base.html'%} 
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if articles%}
+      <h3>Found {{ articles|length }} of searched term {{message}}</h3>
+    {% else %}
+      <h3> Found 0 articles for the search term {{message}}</h3>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+
+    {% if articles %}
+      {% for article in articles %}
+      <div class="card text-center">
+        <div class="card-header">
+          <img class="text-center" src="{{article.article_image.url}}" class="img-responsive" alt="Image" style="height: 400px; width: 100%;">
+        </div>
+        <div class="card-body">
+          <h4 class="text-center" style="color: crimson;"> {{ article.title }} </h4>
+          <h4 class="text-center" style="color: blueviolet;"> {{ article.post }} </h4>
+        </div>
+      </div><br>
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endblock %}
